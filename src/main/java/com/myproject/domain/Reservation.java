@@ -14,10 +14,7 @@ public class Reservation {
     private Integer reservationId;
 
     @Column
-    private Date startDate;
-
-    @Column
-    private Date endDate;
+    private Date date;
 
     @Column
     private Integer numberOfPeople;
@@ -37,20 +34,12 @@ public class Reservation {
         this.reservationId = reservationId;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Integer getNumberOfPeople() {

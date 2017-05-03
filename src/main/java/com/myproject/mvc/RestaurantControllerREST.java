@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/restaurant")
+@RequestMapping(value = "/restaurantREST")
 public class RestaurantControllerREST {
 
     @Autowired
