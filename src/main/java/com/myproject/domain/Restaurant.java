@@ -1,7 +1,9 @@
 package com.myproject.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "restaurant")
@@ -24,6 +26,9 @@ public class Restaurant {
 
     @Column(nullable = false)
     private Integer capacity;
+
+    @OneToMany(mappedBy = "restaurant")
+    private Set<User> users = new HashSet<User>();
 
     public Integer getRestaurantId() {
         return restaurantId;
@@ -63,5 +68,13 @@ public class Restaurant {
 
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

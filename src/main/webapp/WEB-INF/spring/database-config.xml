@@ -13,13 +13,15 @@
                 <value>com.myproject.domain.Client</value>
                 <value>com.myproject.domain.Reservation</value>
                 <value>com.myproject.domain.Restaurant</value>
+                <value>com.myproject.domain.User</value>
+                <value>com.myproject.domain.Authority</value>
             </list>
         </property>
 
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>

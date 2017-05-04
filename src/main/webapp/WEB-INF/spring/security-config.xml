@@ -5,15 +5,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <beans:import resource="database-config.xml"/>
+
     <http auto-config="true">
-        <intercept-url pattern="/**" access="ROLE_USER"/>
+        <intercept-url pattern="/backoffice/**" access="ROLE_USER"/>
     </http>
 
     <authentication-manager>
         <authentication-provider>
-            <user-service>
-                <user name="diana" password="secret" authorities="ROLE_USER"/>
-            </user-service>
+            <jdbc-user-service data-source-ref="myprojectDataSource"/>
         </authentication-provider>
     </authentication-manager>
 
