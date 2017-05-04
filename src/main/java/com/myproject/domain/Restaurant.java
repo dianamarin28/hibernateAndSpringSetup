@@ -22,6 +22,9 @@ public class Restaurant {
     @OneToMany(targetEntity = Reservation.class, mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Reservation> reservationList;
 
+    @Column(nullable = false)
+    private Integer capacity;
+
     public Integer getRestaurantId() {
         return restaurantId;
     }
@@ -52,5 +55,13 @@ public class Restaurant {
 
     public void setReservationList(List<Reservation> reservationList) {
         this.reservationList = reservationList;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 }
