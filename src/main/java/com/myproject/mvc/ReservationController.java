@@ -5,10 +5,17 @@ import com.myproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 @Controller
 @RequestMapping(value = "/backoffice/reservation")
@@ -26,6 +33,26 @@ public class ReservationController {
         Integer restaurantId = userService.getRestaurantIdForUser(currentUser);
 
         model.addAttribute("allReservationsForRestaurant", reservationService.getAllReservationsForRestaurant(restaurantId));
+
+        return "viewReservations";
+    }
+
+    @RequestMapping(value = "/getAllOnDate", method = RequestMethod.POST)
+    public String getAllReservationsForRestaurantOnDate(Principal principal, @RequestParam("date") String date, Model model) {
+        String currentUser = principal.getName();
+        Integer restaurantId = userService.getRestaurantIdForUser(currentUser);
+
+        if (!StringUtils.isEmpty(date)) {
+            DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+            Date javaDate = null;
+            try {
+                javaDate = format.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            model.addAttribute("allReservationsForRestaurantByDate", reservationService.getAllReservationsForRestaurantOnDate(restaurantId, javaDate));
+        }
 
         return "viewReservations";
     }

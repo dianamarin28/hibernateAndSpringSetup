@@ -7,5 +7,6 @@
 </head>
 <body>
     ${allReservationsForRestaurant}
+    ${allReservationsForRestaurantByDate}
 </body>
 </html>
