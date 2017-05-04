@@ -39,10 +39,10 @@ public class ReservationController {
 
     @RequestMapping(value = "/getAllOnDate", method = RequestMethod.POST)
     public String getAllReservationsForRestaurantOnDate(Principal principal, @RequestParam("date") String date, Model model) {
-        String currentUser = principal.getName();
-        Integer restaurantId = userService.getRestaurantIdForUser(currentUser);
-
         if (!StringUtils.isEmpty(date)) {
+            String currentUser = principal.getName();
+            Integer restaurantId = userService.getRestaurantIdForUser(currentUser);
+
             DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
             Date javaDate = null;
             try {
