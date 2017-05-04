@@ -23,7 +23,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Authority> authorities = new HashSet<Authority>();
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "restaurant")
     private Restaurant restaurant;
