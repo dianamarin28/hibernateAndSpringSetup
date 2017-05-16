@@ -12,7 +12,7 @@
 
 <a href="${getAllReservations}">View all reservations</a>
 
-<form:form method="POST" action="${getAllReservationsOnDate}" commandName="dateForm">
+<form:form method="GET" action="${getAllReservationsOnDate}" commandName="dateForm">
     <form:label path="date">Date:</form:label>
     <form:input type="date" path="date"/>
     <input type="submit" value="View all reservations on date"/>

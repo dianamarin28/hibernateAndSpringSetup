@@ -37,7 +37,7 @@ public class ReservationController {
         return "viewReservations";
     }
 
-    @RequestMapping(value = "/getAllOnDate", method = RequestMethod.POST)
+    @RequestMapping(value = "/getAllOnDate", method = RequestMethod.GET)
     public String getAllReservationsForRestaurantOnDate(Principal principal, @RequestParam("date") String date, Model model) {
         if (!StringUtils.isEmpty(date)) {
             String currentUser = principal.getName();
@@ -47,6 +47,7 @@ public class ReservationController {
             Date javaDate = null;
             try {
                 javaDate = format.parse(date);
+                javaDate.setTime(1500);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

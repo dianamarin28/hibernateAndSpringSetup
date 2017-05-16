@@ -16,6 +16,9 @@ public class Address {
     private String city;
 
     @Column(insertable = false, updatable = false)
+    private String region;
+
+    @Column(insertable = false, updatable = false)
     private String country;
 
     @Column(insertable = false, updatable = false)
@@ -43,6 +46,14 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getCountry() {
